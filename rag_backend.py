@@ -18,8 +18,8 @@ from langgraph.prebuilt import ToolNode, tools_condition
 
 load_dotenv()
 
-# llm = ChatGoogleGenerativeAI(model = 'gemini-2.5-flash-lite')
-llm = ChatGroq(model='llama-3.3-70b-versatile', temperature=0)
+llm = ChatGoogleGenerativeAI(model = 'gemini-2.5-flash')
+# llm = ChatGroq(model='llama-3.3-70b-versatile', temperature=0)
 # llm = ChatGroq(model='llama-3.1-8b-instant', temperature=0)
 
 
@@ -42,7 +42,7 @@ B2_Spirit_PDF = "B-2_Spirit_Systems_Engineering_Case_Study.pdf"
 # 2. Text Splitter ( Into Chunks )
 # ----------------------------------
 
-splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=200)
+splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=200)
 
 # ----------------------------------
 # 3. Create Embedding Model
@@ -101,11 +101,11 @@ b2_spirit_vs = create_db(
 # 5. Create Retriever –> converts query to embeddings and performs semantic search
 # ------------------------------------------------------------------------------------
 
-air_missile_retriever = air_missile_vs.as_retriever(search_type= 'mmr', search_kwargs= {'k':5})
+air_missile_retriever = air_missile_vs.as_retriever(search_type= 'mmr', search_kwargs= {'k':3})
 
-drone_retriever = drone_vs.as_retriever(search_type='mmr', search_kwargs= {'k':5})
+drone_retriever = drone_vs.as_retriever(search_type='mmr', search_kwargs= {'k':3})
 
-b2_spirit_retriever = b2_spirit_vs.as_retriever(search_type='mmr', search_kwargs= {'k':5})
+b2_spirit_retriever = b2_spirit_vs.as_retriever(search_type='mmr', search_kwargs= {'k':3})
 
 
 # ----------------------
