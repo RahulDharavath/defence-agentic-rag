@@ -1,0 +1,10 @@
+langchain
+langchain-google-genai
+langchain-groq
+langchain-community
+langgraph 
+python-dotenv 
+langchain-chroma 
+PyMuPDF
+langgraph-checkpoint-sqlite
+sentence-transformers
