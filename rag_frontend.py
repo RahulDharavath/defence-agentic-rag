@@ -99,6 +99,7 @@ if user_input:
     with st.chat_message("assistant"):
         # Use a mutable holder so the generator can set/modify it
         status_holder = {"box": None}
+        collected_tokens = []
         
 
         def ai_only_stream():
@@ -123,7 +124,25 @@ if user_input:
 
                 # Stream ONLY assistant tokens
                 if isinstance(message_chunk, AIMessage):
-                    yield message_chunk.content
+                    content = message_chunk.content
+
+                     # Case 1: Structured content (list of blocks)
+                    if isinstance(content, list):
+                        for block in content:
+                            if (
+                                isinstance(block, dict)
+                                and block.get("type") == "text"
+                            ):
+                                text = block.get("text", "")
+                                if text.strip():
+                                    collected_tokens.append(text)
+                                    yield text
+
+                    # Case 2: Plain text
+                    elif isinstance(content, str):
+                        if content.strip():
+                            collected_tokens.append(content)
+                            yield content
 
         ai_message = st.write_stream(ai_only_stream())
 
@@ -134,6 +153,7 @@ if user_input:
             )
     
     # Save assistant message
+    final_answer = "".join(collected_tokens)
     st.session_state["message_history"].append(
         {"role": "assistant", "content": ai_message}
     )
