@@ -21,7 +21,7 @@ load_dotenv()
 llm = ChatGoogleGenerativeAI(model = 'gemini-2.5-flash-lite')
 # llm = ChatGroq(model='llama-3.3-70b-versatile', temperature=0)
 # llm = ChatGroq(model='llama-3.1-8b-instant', temperature=0)
-# llm = ChatGroq(model='meta-llama/llama-4-scout-17b-16e-instruct', temperature=0)
+
 
 
 # -----------------------------
