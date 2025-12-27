@@ -18,8 +18,8 @@ from langgraph.prebuilt import ToolNode, tools_condition
 
 load_dotenv()
 
-llm = ChatGoogleGenerativeAI(model = 'gemini-2.5-flash')
-# llm = ChatGroq(model='llama-3.3-70b-versatile', temperature=0)
+# llm = ChatGoogleGenerativeAI(model = 'gemini-2.5-flash-lite')
+llm = ChatGroq(model='llama-3.3-70b-versatile', temperature=0)
 # llm = ChatGroq(model='llama-3.1-8b-instant', temperature=0)
 
 
