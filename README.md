@@ -144,3 +144,8 @@ The chatbot uses a **state-based agent** that can:
 - **LLaMA 3 / Gemini**
 - **Google Generative AI Embeddings**
 
+---
+
+https://github.com/user-attachments/assets/c7c84f27-e6ae-4299-b511-034609c02f95
+
+
